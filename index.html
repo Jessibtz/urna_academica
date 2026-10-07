@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Urna Acadêmica</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><h1>Urna Acadêmica</h1><p>Projeto Avaliativo — Banco de Dados</p></header>
+<main>
+<nav class="tabs"><button onclick="show('cadastros')">Cadastros</button><button onclick="show('votacao')">Votação</button><button onclick="show('resultado')">Apuração</button></nav>
+<section id="cadastros" class="tela"><div class="grid">
+<div class="card"><h2>Eleitores</h2><p>Máximo 10</p><form id="formEleitor"><input id="nomeEleitor" placeholder="Nome" required><input id="matriculaEleitor" placeholder="Matrícula" required><button>Cadastrar</button></form><div id="listaEleitores"></div></div>
+<div class="card"><h2>Representantes</h2><p>Máximo 5</p><form id="formRepresentante"><input id="nomeRepresentante" placeholder="Nome" required><input id="numeroRepresentante" type="number" min="1" max="99" placeholder="Número" required><button>Cadastrar</button></form><div id="listaRepresentantes"></div></div>
+<div class="card"><h2>Vice-representantes</h2><p>Máximo 5</p><form id="formVice"><input id="nomeVice" placeholder="Nome" required><input id="numeroVice" type="number" min="1" max="99" placeholder="Número" required><button>Cadastrar</button></form><div id="listaVices"></div></div>
+</div></section>
+<section id="votacao" class="tela hidden"><div class="urna">
+<div class="urna-top"><div class="seal">UA</div><div><b>URNA ACADÊMICA</b><small>Simulação educacional</small></div></div>
+<div class="urna-body">
+<div class="visor">
+<div class="cargo"><span>SEU VOTO PARA</span><strong id="cargoAtual">REPRESENTANTE</strong></div>
+<label>Matrícula do eleitor</label><input id="matriculaVotante" placeholder="Digite antes de votar">
+<div class="numero-row"><span>Número:</span><div class="digits"><span class="digit"></span><span class="digit"></span></div></div>
+<div id="dadosCandidato" class="candidate"><p>Digite o número do candidato.</p></div>
+<div class="visor-foot"><p>Aperte a tecla:</p><p><b>VERDE</b> para CONFIRMAR</p><p><b>LARANJA</b> para CORRIGIR</p></div>
+</div>
+<div class="painel"><div class="brand">JUSTIÇA<br>ACADÊMICA</div><div class="teclado">
+<button onclick="digitar('1')">1</button><button onclick="digitar('2')">2</button><button onclick="digitar('3')">3</button>
+<button onclick="digitar('4')">4</button><button onclick="digitar('5')">5</button><button onclick="digitar('6')">6</button>
+<button onclick="digitar('7')">7</button><button onclick="digitar('8')">8</button><button onclick="digitar('9')">9</button>
+<span></span><button onclick="digitar('0')">0</button><span></span>
+</div><div class="acoes"><button class="branco" onclick="branco()">BRANCO</button><button class="corrige" onclick="corrigir()">CORRIGE</button><button class="confirma" onclick="confirmar()">CONFIRMA</button></div></div>
+</div><div id="mensagemVoto" class="msg"></div></div></section>
+<section id="resultado" class="tela hidden"><div class="card"><div class="result-head"><div><h2>Apuração</h2><p>Resultado registrado no MySQL.</p></div><button onclick="carregarResultados()">Atualizar</button></div><div class="result-grid"><div><h3>Representantes</h3><div id="resultadoRepresentantes"></div></div><div><h3>Vice-representantes</h3><div id="resultadoVices"></div></div></div></div></section>
+</main><script src="script.js"></script></body></html>

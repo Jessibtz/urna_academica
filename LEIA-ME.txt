@@ -1,0 +1,63 @@
+ATIVIDADE AVALIATIVA — URNA ACADÊMICA
+
+O FRONTEND E O BACKEND JÁ ESTÃO PRONTOS.
+O grupo deverá criar o banco MySQL e conectá-lo ao backend.
+
+BANCO: urna_academica
+
+TABELA eleitor
+- id: chave primária, AUTO_INCREMENT
+- nome: obrigatório
+- matricula: obrigatória e UNIQUE
+- votou: BOOLEAN, iniciar FALSE
+
+TABELA representante
+- id: chave primária, AUTO_INCREMENT
+- nome: obrigatório
+- numero: obrigatório e UNIQUE
+
+TABELA vice_representante
+- id: chave primária, AUTO_INCREMENT
+- nome: obrigatório
+- numero: obrigatório e UNIQUE
+
+TABELA voto
+- id: chave primária, AUTO_INCREMENT
+- representante_id: chave estrangeira para representante(id)
+- vice_id: chave estrangeira para vice_representante(id)
+- data_hora: DATETIME com valor padrão CURRENT_TIMESTAMP
+- NÃO criar eleitor_id na tabela voto
+
+RELACIONAMENTOS
+REPRESENTANTE 1:N VOTO
+VICE_REPRESENTANTE 1:N VOTO
+
+LIMITES
+- máximo 10 eleitores
+- máximo 5 representantes
+- máximo 5 vice-representantes
+- matrícula não pode repetir
+- números dos candidatos não podem repetir
+- cada eleitor só pode votar uma vez
+
+CONEXÃO
+Abra app.py e configure:
+
+def conectar():
+    return mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="SUA_SENHA_MYSQL",
+        database="urna_academica"
+    )
+
+INSTALAR DEPENDÊNCIAS
+python -m pip install flask flask-cors mysql-connector-python
+
+EXECUTAR BACKEND
+python app.py
+
+Abrir index.html preferencialmente com Live Server.
+
+FLUXO
+FRONTEND -> HTTP/FETCH -> FLASK -> SQL -> MYSQL
